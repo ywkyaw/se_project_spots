@@ -5,6 +5,9 @@
 .card__title {
   font-size: 20px;
   line-height: 24px;
+  color: #212121;
+  font-weight: 500;
+  margin: 12px 0 40px;
 }
 
 .card__image {
@@ -21,6 +24,8 @@
   border: none;
   background-color: transparent;
   opacity: 40%;
+  margin: 12px 0 40px;
+  cursor: pointer;
 }
 
 .card__content {
@@ -31,6 +36,11 @@
 
 @media screen and (max-width: 627px) {
   .card__image {
-    height: 288px;
+    height: 280px;
+  }
+
+  .card__title {
+    font-size: 16px;
+    line-height: 16px;
   }
 }

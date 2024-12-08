@@ -16,4 +16,4 @@ A responsive platform to share photos.
 
 This website is deployed to GitHub pages.
 
-Deployment link:
+Deployment link: https://ywkyaw.github.io/se_project_spots/index.html

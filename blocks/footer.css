@@ -1,9 +1,11 @@
-footer {
+.footer {
   display: flex;
   padding: 34px 0 20px;
   border-top: 1px rgba(33, 33, 33, 0.4) solid;
   max-width: 1280px;
   margin: 0 auto;
+  box-sizing: border-box;
+  width: calc(100% - 40px);
 }
 
 .footer__text {
@@ -18,11 +20,7 @@ footer {
 }
 
 @media screen and (max-width: 627px) {
-  footer {
-    display: flex;
-    padding: 34px 0 20px;
-    border-top: 1px rgba(33, 33, 33, 0.4) solid;
-    margin: 0 auto;
+  .footer {
     max-width: 280px;
   }
 }

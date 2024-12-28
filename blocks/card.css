@@ -34,6 +34,10 @@
   cursor: pointer;
 }
 
+.card__like-btn:hover {
+  opacity: 100%;
+}
+
 .card__content {
   display: flex;
   align-items: center;

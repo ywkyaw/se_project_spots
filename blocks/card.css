@@ -35,6 +35,42 @@
   cursor: pointer;
 }
 
+.card__delete-btn {
+  background-image: url(../images/StateDeleteDefault.svg);
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.card__delete_image {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.card__delete-btn:hover {
+  background-image: url("../images/StateDeleteHover.svg");
+}
+
+.card__like-btn_liked {
+  background-image: url("../images/StateLiked_Final.svg");
+  opacity: 1;
+  background-repeat: no-repeat;
+  width: 23px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+  margin: 12px 0 0;
+  cursor: pointer;
+}
+
+.card__like-btn_liked:hover {
+  background-image: url("../images/StateLikedDim_Final.svg");
+}
 .card__like-btn:hover {
   opacity: 100%;
 }

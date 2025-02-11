@@ -53,7 +53,6 @@ const editModalDescriptionInput = editProfileModal.querySelector(
 const linkInput = newPostModal.querySelector("#add-card-link-input");
 const captionInput = newPostModal.querySelector("#add-card-name-input");
 const profileCloseButton = document.querySelector(".modal__close-btn");
-const newpostCloseButton = document.querySelector(".modal__close-btn");
 const editFormElement = editProfileModal.querySelector(".modal__form");
 
 const closeProfileModal = document.querySelector("#edit-profile-modal");
@@ -67,7 +66,7 @@ const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
-
+const previewCloseBtn = previewModal.querySelector(".modal__close-btn");
 function getCardElement(data) {
   console.log(data);
   const cardElement = cardTemplate.content
@@ -78,7 +77,6 @@ function getCardElement(data) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
   const removebtn = cardElement.querySelector(".card__delete-btn");
-  const previewCloseBtn = previewModal.querySelector(".modal__close-btn");
 
   cardNameEl.textContent = data.name;
   cardImageEl.src = data.link;
@@ -100,11 +98,8 @@ function getCardElement(data) {
     previewModalImageEl.alt = data.alt;
   });
 
-  previewCloseBtn.addEventListener("click", () => {
-    closeModal(previewModal);
-  });
-
   return cardElement;
+  x;
 }
 
 function openModal(modal) {
@@ -126,9 +121,11 @@ function handleAddCardSubmit(evt) {
   evt.preventDefault();
   console.log(cardNameInput.value);
   console.log(cardLinkInput.value);
-  const InputValues = { name: cardNameInput.value, link: cardLinkInput.value };
-  const cardElement = getCardElement(InputValues);
+  const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
+  const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
+  evt.target.reset();
+  closeModal(newPostModal);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -145,10 +142,9 @@ profileCloseButton.addEventListener("click", () => {
 cardModalCloseBtn.addEventListener("click", () => {
   closeModal(cardModal);
 });
-cardModalCloseBtn.addEventListener("click", () => {
+previewCloseBtn.addEventListener("click", () => {
   closeModal(previewModal);
 });
-
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
 

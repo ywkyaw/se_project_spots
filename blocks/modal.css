@@ -132,7 +132,7 @@
   word-wrap: break-word;
 }
 
-.modal__close_type_preview {
+.modal__close-btn_type_preview {
   background-image: url("../images/previewClose.svg");
   top: 0;
   right: -42.5px;
@@ -157,7 +157,7 @@
     border-radius: 8px;
     position: relative;
   }
-  .modal__close_type_preview {
+  .modal__close-btn_type_preview {
     position: absolute;
     margin-top: -50px;
     margin-right: -20px;

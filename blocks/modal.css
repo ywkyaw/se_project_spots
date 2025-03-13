@@ -37,6 +37,10 @@
   transition-delay: 0s;
 }
 
+.modal_hide {
+  visibility: hidden;
+}
+
 .modal__container {
   background: #fff;
   padding: 32px 50px;
@@ -72,6 +76,9 @@
   line-height: 1;
 }
 
+.modal__form {
+}
+
 .modal__label {
   display: flex;
   flex-direction: column;
@@ -89,6 +96,18 @@
 
 .modal__input:hover {
   border-color: #212121;
+}
+
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+.modal__error {
+  color: red;
+}
+
+.modal__invalid_button {
+  opacity: 50%;
 }
 
 .modal__submit-btn {

@@ -107,12 +107,20 @@ function getCardElement(data) {
   x;
 }
 
+function handleOverlayClick(event) {
+  if (event.target.classList.contains("modal")) {
+    closeModal(event.target);
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("click", handleOverlayClick);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("click", handleOverlayClick);
 }
 
 function handleEditFormSubmit(evt) {
@@ -137,12 +145,6 @@ function handleAddCardSubmit(evt) {
 previewModal.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     closeModal(previewModal);
-  }
-});
-
-document.addEventListener("click", (e) => {
-  if (!closePreview.contains(e.target)) {
-    previewModal.classList.add("modal_hide");
   }
 });
 

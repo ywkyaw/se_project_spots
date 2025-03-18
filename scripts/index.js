@@ -40,10 +40,10 @@ const newCaption = document.querySelector(".profile__description");
 const newPost = document.querySelector(".profile__add-btn");
 
 const cardModal = document.querySelector("#add-card-modal");
-const previewClose = document.querySelector(".modal");
 const cardModalCloseBtn = cardModal.querySelector(".modal__close-btn");
 const cardSubmitBtn = cardModal.querySelector(".modal__button");
 const closePreview = document.querySelector(".modal__content");
+const closePreviewModal = document.querySelectorAll(".modal");
 
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const newPostModal = document.querySelector("#add-card-modal");
@@ -104,7 +104,6 @@ function getCardElement(data) {
   });
 
   return cardElement;
-  x;
 }
 
 function handleOverlayClick(event) {
@@ -113,14 +112,24 @@ function handleOverlayClick(event) {
   }
 }
 
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".modal_opened");
+    const closePopup = document.querySelector(".modal_opened");
+    closeModal(closePopup);
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("click", handleOverlayClick);
+  document.addEventListener("keydown", handleEscape);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("click", handleOverlayClick);
+  document.removeEventListener("keydown", handleEscape);
 }
 
 function handleEditFormSubmit(evt) {
@@ -138,15 +147,9 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   evt.target.reset();
-  disableButton(cardSubmitBtn);
+  disableButton(cardSubmitBtn, settings);
   closeModal(newPostModal);
 }
-
-previewModal.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    closeModal(previewModal);
-  }
-});
 
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;

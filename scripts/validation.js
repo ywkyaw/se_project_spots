@@ -2,30 +2,30 @@ const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-btn",
-  inactiveButtonClass: "modal__button",
-  inputErrorClass: "-error",
-  errorClass: "modal__error_visible",
+  inactiveButtonClass: "modal__submit-btn_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: ".modal__error_visible",
 };
 
-const showInputError = (formEl, inputEl, errorMsg) => {
-  const errorMsgID = inputEl.id + settings.inputErrorClass;
+const showInputError = (formEl, inputEl, errorMsg, settings) => {
+  const errorMsgID = inputEl.id + "-error";
   const errorMsgEl = formEl.querySelector("#" + errorMsgID);
   errorMsgEl.textContent = errorMsg;
   inputEl.classList.add(settings.inputErrorClass);
 };
 
-const hideInputError = (formEl, inputEl) => {
-  const errorMsgID = inputEl.id + settings.inputErrorClass;
+const hideInputError = (formEl, inputEl, settings) => {
+  const errorMsgID = inputEl.id + "-error";
   const errorMsgEl = formEl.querySelector("#" + errorMsgID);
   errorMsgEl.textContent = "";
   inputEl.classList.remove(settings.inputErrorClass);
 };
 
-const checkInputValidity = (formEl, inputEl) => {
+const checkInputValidity = (formEl, inputEl, settings) => {
   if (!inputEl.validity.valid) {
-    showInputError(formEl, inputEl, inputEl.validationMessage);
+    showInputError(formEl, inputEl, inputEl.validationMessage, settings);
   } else {
-    hideInputError(formEl, inputEl);
+    hideInputError(formEl, inputEl, settings);
   }
 };
 
@@ -35,24 +35,23 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonEl) => {
+const toggleButtonState = (inputList, buttonEl, settings) => {
   if (hasInvalidInput(inputList)) {
-    disableButton(buttonEl);
+    disableButton(buttonEl, settings);
   } else {
-    buttonEl.style.opacity = 1;
+    buttonEl.classList.remove(settings.inactiveButtonClass);
     buttonEl.disabled = false;
-    //TODO - remove the disabled class
   }
 };
 
 const disableButton = (buttonEl, settings) => {
   buttonEl.disabled = true;
-  buttonEl.style.opacity = 0.5;
+  buttonEl.classList.add(settings.inactiveButtonClass);
 };
 
 const resetValidation = (formEl, inputList) => {
   inputList.forEach((input) => {
-    hideInputError(formEl, input);
+    hideInputError(formEl, input, settings);
   });
 };
 

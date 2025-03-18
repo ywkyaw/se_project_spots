@@ -119,6 +119,10 @@
   cursor: pointer;
 }
 
+.modal__submit-btn_disabled {
+  opacity: 0.5;
+}
+
 .modal__content {
   max-width: 430px;
   width: 100%;
